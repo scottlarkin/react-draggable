@@ -7,7 +7,7 @@
 		exports["ReactDraggable"] = factory(require("react-dom"), require("react"));
 	else
 		root["ReactDraggable"] = factory(root["ReactDOM"], root["React"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_6__) {
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_6__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -1302,6 +1302,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /*:: import type {ControlPosition, DraggableBounds, DraggableCoreProps} from './DraggableCore';*/
 /*:: import type {DraggableEventHandler} from './utils/types';*/
 /*:: import type {Element as ReactElement} from 'react';*/
+
+
+console.log('Hello world from draggable');
+
 /*:: type DraggableState = {
   dragging: boolean,
   dragged: boolean,
@@ -2478,9 +2482,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		module.exports = classNames;
 	} else if (true) {
 		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
 			return classNames;
-		}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	} else {
 		window.classNames = classNames;
