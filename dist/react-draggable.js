@@ -394,9 +394,6 @@ function createCSSTransform(_ref) /*: Object*/ {
       rotation = _ref.rotation;
 
   // Replace unitless items with px
-
-  console.log('rotation is', rotation);
-
   return _defineProperty({}, (0, _getPrefix.browserPrefixToKey)('transform', _getPrefix2.default), 'rotate(' + rotation + 'deg) translate(' + x + 'px,' + y + 'px)');
 }
 
@@ -719,7 +716,8 @@ function createDraggableData(draggable /*: Draggable*/, coreData /*: DraggableDa
     deltaX: coreData.deltaX,
     deltaY: coreData.deltaY,
     lastX: draggable.state.x,
-    lastY: draggable.state.y
+    lastY: draggable.state.y,
+    r: draggable.state.r
   };
 }
 
