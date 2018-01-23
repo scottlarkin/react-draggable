@@ -282,7 +282,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/*:: import type {ControlPosition, MouseTouchEvent} from './types';*/
+/*:: import type { ControlPosition, MouseTouchEvent } from './types';*/
 
 
 var matchesSelectorFunc = '';
@@ -378,7 +378,7 @@ function innerWidth(node /*: HTMLElement*/) /*: number*/ {
 }
 
 // Get from offsetParent
-function offsetXYFromParent(evt /*: {clientX: number, clientY: number}*/, offsetParent /*: HTMLElement*/) /*: ControlPosition*/ {
+function offsetXYFromParent(evt /*: { clientX: number, clientY: number }*/, offsetParent /*: HTMLElement*/) /*: ControlPosition*/ {
   var isBody = offsetParent === offsetParent.ownerDocument.body;
   var offsetParentRect = isBody ? { left: 0, top: 0 } : offsetParent.getBoundingClientRect();
 
@@ -390,20 +390,25 @@ function offsetXYFromParent(evt /*: {clientX: number, clientY: number}*/, offset
 
 function createCSSTransform(_ref) /*: Object*/ {
   var x = _ref.x,
-      y = _ref.y;
+      y = _ref.y,
+      rotation = _ref.rotation;
 
   // Replace unitless items with px
-  return _defineProperty({}, (0, _getPrefix.browserPrefixToKey)('transform', _getPrefix2.default), 'translate(' + x + 'px,' + y + 'px)');
+
+  console.log('rotation is', rotation);
+
+  return _defineProperty({}, (0, _getPrefix.browserPrefixToKey)('transform', _getPrefix2.default), 'rotate(' + rotation + 'deg) translate(' + x + 'px,' + y + 'px)');
 }
 
 function createSVGTransform(_ref3) /*: string*/ {
   var x = _ref3.x,
-      y = _ref3.y;
+      y = _ref3.y,
+      rotation = _ref3.rotation;
 
   return 'translate(' + x + ',' + y + ')';
 }
 
-function getTouch(e /*: MouseTouchEvent*/, identifier /*: number*/) /*: ?{clientX: number, clientY: number}*/ {
+function getTouch(e /*: MouseTouchEvent*/, identifier /*: number*/) /*: ?{ clientX: number, clientY: number }*/ {
   return e.targetTouches && (0, _shims.findInArray)(e.targetTouches, function (t) {
     return identifier === t.identifier;
   }) || e.changedTouches && (0, _shims.findInArray)(e.changedTouches, function (t) {
@@ -1299,19 +1304,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-/*:: import type {ControlPosition, DraggableBounds, DraggableCoreProps} from './DraggableCore';*/
-/*:: import type {DraggableEventHandler} from './utils/types';*/
-/*:: import type {Element as ReactElement} from 'react';*/
+/*:: import type { ControlPosition, DraggableBounds, DraggableCoreProps } from './DraggableCore';*/
+/*:: import type { DraggableEventHandler } from './utils/types';*/
+/*:: import type { Element as ReactElement } from 'react';*/
 
 
-console.log('Hello world from draggable test update');
+console.log('Hello world from draggable test update 2');
 
 /*:: type DraggableState = {
   dragging: boolean,
   dragged: boolean,
   x: number, y: number,
-  slackX: number, slackY: number,
-  isElementSVG: boolean
+  slackX: number,
+  slackY: number,
+  isElementSVG: boolean,
+  r: number
 };*/
 
 
@@ -1328,6 +1335,8 @@ console.log('Hello world from draggable test update');
   defaultClassNameDragged: string,
   defaultPosition: ControlPosition,
   position: ControlPosition,
+  rotation: number,
+  defaultRotation: 0
 };*/
 
 var Draggable = function (_React$Component) {
@@ -1446,7 +1455,8 @@ var Draggable = function (_React$Component) {
       slackX: 0, slackY: 0,
 
       // Can only determine if SVG after mounting
-      isElementSVG: false
+      isElementSVG: false,
+      r: props.rotation ? props.rotation : props.defaultRotation
     };
     return _this;
   }
@@ -1498,7 +1508,9 @@ var Draggable = function (_React$Component) {
         x: (0, _positionFns.canDragX)(this) && draggable ? this.state.x : position.x,
 
         // Set top if vertical drag is enabled
-        y: (0, _positionFns.canDragY)(this) && draggable ? this.state.y : position.y
+        y: (0, _positionFns.canDragY)(this) && draggable ? this.state.y : position.y,
+
+        rotation: this.state.r
       };
 
       // If this element was SVG, we use the `transform` attribute.
