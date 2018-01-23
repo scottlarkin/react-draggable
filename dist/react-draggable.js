@@ -1508,7 +1508,7 @@ var Draggable = function (_React$Component) {
         // Set top if vertical drag is enabled
         y: (0, _positionFns.canDragY)(this) && draggable ? this.state.y : position.y,
 
-        rotation: this.state.r
+        rotation: this.props.rotation
       };
 
       // If this element was SVG, we use the `transform` attribute.
