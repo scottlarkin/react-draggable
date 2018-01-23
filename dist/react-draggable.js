@@ -1309,7 +1309,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /*:: import type { Element as ReactElement } from 'react';*/
 
 
-console.log('Hello world from draggable test update 4');
+console.log('Hello world from draggable test update 5');
 
 /*:: type DraggableState = {
   dragging: boolean,
@@ -1336,7 +1336,7 @@ console.log('Hello world from draggable test update 4');
   defaultPosition: ControlPosition,
   position: ControlPosition,
   rotation: number,
-  defaultRotation: 0
+  defaultRotation: number
 };*/
 
 var Draggable = function (_React$Component) {
@@ -1439,8 +1439,6 @@ var Draggable = function (_React$Component) {
 
       _this.setState(newState);
     };
-
-    console.log('props', props);
 
     _this.state = {
       // Whether or not we are currently dragging.
