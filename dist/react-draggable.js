@@ -394,7 +394,7 @@ function createCSSTransform(_ref) /*: Object*/ {
       rotation = _ref.rotation;
 
   // Replace unitless items with px
-  return _defineProperty({}, (0, _getPrefix.browserPrefixToKey)('transform', _getPrefix2.default), 'rotate(' + rotation + 'deg) translate(' + x + 'px,' + y + 'px)');
+  return _defineProperty({}, (0, _getPrefix.browserPrefixToKey)('transform', _getPrefix2.default), 'translate(' + x + 'px,' + y + 'px) rotate(' + rotation + 'deg)');
 }
 
 function createSVGTransform(_ref3) /*: string*/ {
