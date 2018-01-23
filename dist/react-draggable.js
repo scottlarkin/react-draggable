@@ -1305,10 +1305,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /*:: import type { ControlPosition, DraggableBounds, DraggableCoreProps } from './DraggableCore';*/
 /*:: import type { DraggableEventHandler } from './utils/types';*/
 /*:: import type { Element as ReactElement } from 'react';*/
-
-
-console.log('Hello world from draggable test update 5');
-
 /*:: type DraggableState = {
   dragging: boolean,
   dragged: boolean,
