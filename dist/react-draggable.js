@@ -1330,7 +1330,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
   defaultPosition: ControlPosition,
   position: ControlPosition,
   rotation: number,
-  defaultRotation: number
+  defaultRotation: number,
+  ignoreCssTransform: boolean
 };*/
 
 var Draggable = function (_React$Component) {
@@ -1509,13 +1510,13 @@ var Draggable = function (_React$Component) {
 
       // If this element was SVG, we use the `transform` attribute.
       if (this.state.isElementSVG) {
-        svgTransform = (0, _domFns.createSVGTransform)(transformOpts);
+        if (!this.props.ignoreCssTransform) svgTransform = (0, _domFns.createSVGTransform)(transformOpts);
       } else {
         // Add a CSS transform to move the element around. This allows us to move the element around
         // without worrying about whether or not it is relatively or absolutely positioned.
         // If the item you are dragging already has a transform set, wrap it in a <span> so <Draggable>
         // has a clean slate.
-        style = (0, _domFns.createCSSTransform)(transformOpts);
+        if (!this.props.ignoreCssTransform) style = (0, _domFns.createCSSTransform)(transformOpts);
       }
 
       var _props = this.props,
@@ -1625,6 +1626,7 @@ Draggable.propTypes = _extends({}, _DraggableCore2.default.propTypes, {
 
   rotation: _propTypes2.default.number,
   defaultRotation: _propTypes2.default.number,
+  ignoreCssTransform: _propTypes2.default.Boolean,
 
   /**
    * `position`, if present, defines the current position of the element.
@@ -1667,7 +1669,8 @@ Draggable.defaultProps = _extends({}, _DraggableCore2.default.defaultProps, {
   defaultPosition: { x: 0, y: 0 },
   position: null,
   rotation: 0,
-  defaultRotation: 0
+  defaultRotation: 0,
+  ignoreCssTransform: false
 });
 exports.default = Draggable;
 
