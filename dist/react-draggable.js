@@ -1304,7 +1304,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /*:: import type {Element as ReactElement} from 'react';*/
 
 
-console.log('Hello world from draggable');
+console.log('Hello world from draggable test update');
 
 /*:: type DraggableState = {
   dragging: boolean,
