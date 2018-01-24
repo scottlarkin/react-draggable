@@ -1333,6 +1333,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
   defaultRotation: number,
   ignoreCssTransform: boolean
 };*/
+console.log('test test test', _propTypes2.default, _propTypes2.default.bool);
 
 var Draggable = function (_React$Component) {
   _inherits(Draggable, _React$Component);
