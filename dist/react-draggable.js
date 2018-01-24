@@ -1627,7 +1627,6 @@ Draggable.propTypes = _extends({}, _DraggableCore2.default.propTypes, {
   rotation: _propTypes2.default.number,
   defaultRotation: _propTypes2.default.number,
   ignoreCssTransform: function () {
-    console.log('test test test', _propTypes2.default);
     return _propTypes2.default.bool;
   }(),
 
