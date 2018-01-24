@@ -1626,7 +1626,7 @@ Draggable.propTypes = _extends({}, _DraggableCore2.default.propTypes, {
 
   rotation: _propTypes2.default.number,
   defaultRotation: _propTypes2.default.number,
-  ignoreCssTransform: _propTypes2.default.Boolean,
+  ignoreCssTransform: _propTypes2.default.bool,
 
   /**
    * `position`, if present, defines the current position of the element.
