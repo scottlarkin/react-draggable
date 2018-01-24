@@ -1333,7 +1333,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
   defaultRotation: number,
   ignoreCssTransform: boolean
 };*/
-console.log('test test test', _propTypes2.default, _propTypes2.default.bool);
 
 var Draggable = function (_React$Component) {
   _inherits(Draggable, _React$Component);
@@ -1627,7 +1626,10 @@ Draggable.propTypes = _extends({}, _DraggableCore2.default.propTypes, {
 
   rotation: _propTypes2.default.number,
   defaultRotation: _propTypes2.default.number,
-  ignoreCssTransform: _propTypes2.default.bool,
+  ignoreCssTransform: function () {
+    console.log('test test test', _propTypes2.default);
+    return _propTypes2.default.bool;
+  }(),
 
   /**
    * `position`, if present, defines the current position of the element.
